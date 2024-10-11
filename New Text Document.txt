@@ -1,0 +1,22 @@
+import random
+
+def player(prev_play, opponent_history=[]):
+    # Keeping track of opponent's last plays
+    if prev_play:
+        opponent_history.append(prev_play)
+
+    # Basic strategy to use
+    if len(opponent_history) < 2:
+        return random.choice(['R', 'P', 'S'])  # Random for the first two plays
+
+    # Simple strategy: counter the opponent's last move
+    last_move = opponent_history[-1]
+    
+    if last_move == 'R':
+        return 'P'  # Paper beats Rock
+    elif last_move == 'P':
+        return 'S'  # Scissors beat Paper
+    elif last_move == 'S':
+        return 'R'  # Rock beats Scissors
+
+# You can define more sophisticated strategies here if needed.
